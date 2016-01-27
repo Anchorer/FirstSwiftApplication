@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -19,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="IvQ-yU-YqK">
-                                <rect key="frame" x="20" y="41" width="560" height="105"/>
+                                <rect key="frame" x="20" y="41" width="560" height="437"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iyq-bU-lTr">
                                         <rect key="frame" x="0.0" y="0.0" width="87" height="21"/>
@@ -39,6 +40,16 @@
                                             <action selector="setDefaultLabelText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bhl-0i-7B0"/>
                                         </connections>
                                     </button>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="b2b-ux-iMp">
+                                        <rect key="frame" x="0.0" y="117" width="320" height="320"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="b2b-ux-iMp" secondAttribute="height" multiplier="1:1" id="jC0-lK-FIO"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="dv9-Sr-7wL" appends="YES" id="G2O-Ye-wsD"/>
+                                        </connections>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="9XK-8A-onO" firstAttribute="leading" secondItem="IvQ-yU-YqK" secondAttribute="leading" id="MeI-53-rbH"/>
@@ -56,11 +67,20 @@
                     <connections>
                         <outlet property="mealNameLabel" destination="Iyq-bU-lTr" id="cc4-60-jYg"/>
                         <outlet property="nameTextField" destination="9XK-8A-onO" id="McB-fQ-Knr"/>
+                        <outlet property="photoImageView" destination="b2b-ux-iMp" id="Wp9-re-mY2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="dv9-Sr-7wL">
+                    <connections>
+                        <action selector="selectImageFromPhotoLibrary:" destination="BYZ-38-t0r" id="QXR-AD-ASG"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="245" y="337"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="defaultPhoto" width="1080" height="1080"/>
+    </resources>
 </document>
